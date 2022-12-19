@@ -8,8 +8,8 @@ export class Negociacoes {
         this.negociacoes.push(negociacao);
     }
 
-    lista(): Array<Negociacao> {
-        return this.negociacoes
+    lista(): ReadonlyArray<Negociacao> {
+        return this.negociacoes;
     }
 
 }
