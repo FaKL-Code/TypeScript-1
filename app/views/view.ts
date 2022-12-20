@@ -5,7 +5,7 @@ export abstract class View<T> {
     this.elemento = document.querySelector(seletor);
   }
 
-  update(model: T) {
+  public update(model: T) {
     const template = this.template(model);
     this.elemento.innerHTML = template;
   }
