@@ -13,9 +13,11 @@ export class NegociacaoController {
   private mensagemView = new MensagemView("#mensagemView");
 
   constructor() {
-    this.inputData = document.querySelector("#data");
-    this.inputQuantidade = document.querySelector("#quantidade");
-    this.inputValor = document.querySelector("#valor");
+    this.inputData = document.querySelector("#data") as HTMLInputElement;
+    this.inputQuantidade = document.querySelector(
+      "#quantidade"
+    ) as HTMLInputElement;
+    this.inputValor = document.querySelector("#valor") as HTMLInputElement;
     this.negociacoesView.update(this.negociacoes);
   }
 
@@ -25,7 +27,7 @@ export class NegociacaoController {
       this.inputQuantidade.value,
       this.inputValor.value
     );
-    if (this.diaUtil) {
+    if (this.diaUtil(negociacao.data)) {
       this.mensagemView.update("Insira um dia útil");
       return;
     }
@@ -34,7 +36,7 @@ export class NegociacaoController {
     this.atualizaView();
   }
 
-  private diaUtil(data: Date) {
+  private diaUtil(data: Date): boolean {
     return data.getDay() == Dias.SABADO || data.getDay() == Dias.SABADO;
   }
 

@@ -1,7 +1,13 @@
 export class View {
     constructor(seletor, escapar) {
         this.escapar = false;
-        this.elemento = document.querySelector(seletor);
+        const elemento = document.querySelector(seletor);
+        if (elemento) {
+            this.elemento = elemento;
+        }
+        else {
+            throw Error("Div nao encontrada");
+        }
         escapar ? (this.escapar = escapar) : this.escapar;
     }
     update(model) {

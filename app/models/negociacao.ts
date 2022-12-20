@@ -14,11 +14,16 @@ export class Negociacao {
     return this.quantidade * this.valor;
   }
 
-  public static criaDe(_data: string, _quantidade: string, _valor: string) {
+  public static formataData(data: string): Date {
     const exp = /-/g;
-    const date = new Date(_data.replace(exp, ","));
-    const quantidade = parseInt(_quantidade);
-    const valor = parseFloat(_valor);
-    return new Negociacao(date, quantidade, valor);
+    const date = new Date(data.replace(exp, ","));
+    return date;
+  }
+
+  public static criaDe(data: string, quantidade: string, valor: string) {
+    const date = this.formataData(data);
+    const quantidadeInt = parseInt(quantidade);
+    const valorFloat = parseFloat(valor);
+    return new Negociacao(date, quantidadeInt, valorFloat);
   }
 }
