@@ -1,4 +1,4 @@
-export class View<T> {
+export abstract class View<T> {
   protected elemento: HTMLElement;
 
   constructor(seletor: string) {
@@ -10,7 +10,5 @@ export class View<T> {
     this.elemento.innerHTML = template;
   }
 
-  template(model: T): string {
-    throw Error("Implementar o template na classe filha");
-  }
+  abstract template(model: T): string;
 }
